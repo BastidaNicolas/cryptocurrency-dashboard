@@ -1,8 +1,14 @@
 import React from 'react'
 import { useHistory } from 'react-router';
-import { Grid, Link, Skeleton, Typography } from '@mui/material'
-import { Cryptocurrencies, News } from './index';
+import Cryptocurrencies from './Cryptocurrencies';
+import News from './News';
 import millify from 'millify';
+
+// MaterialUI import
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import Skeleton from '@mui/material/Skeleton';
+import Typography from '@mui/material/Typography';
 
 import { useGetCryptosQuery } from '../services/cryptoApi';
 

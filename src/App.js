@@ -1,5 +1,14 @@
-import {Navbar, Homepage, Cryptocurrencies, Exchanges, News, CurrencyDetails} from './Components/index';
+// Components
+import Navbar from './Components/Navbar';
+import Homepage from './Components/Homepage';
+import Cryptocurrencies from './Components/Cryptocurrencies';
+import Exchanges from './Components/Exchanges';
+import News from './Components/News';
+import CurrencyDetails from './Components/CurrencyDetails';
+import Footer from './Components/Footer';
+// MatUI Library
 import { createTheme, ThemeProvider } from '@mui/material';
+// Routing
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './app/store';
@@ -28,10 +37,11 @@ function App() {
                 <Route path='/news'>
                   <News/>
                 </Route>
-                <Route path='/currencydetails'>
+                <Route path='/currencydetails/:coinId'>
                   <CurrencyDetails/>
                 </Route>
               </Switch>
+              <Footer/>
             </Navbar>
           </Provider>
         </Router>

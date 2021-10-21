@@ -1,9 +1,26 @@
 import React, { Fragment, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import { Box, AppBar, Toolbar, Typography, IconButton, Drawer, Button, List, ListItem, Icon, ListItemIcon, ListItemText, Container, Avatar } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { AccountBalance, Home, MenuSharp, MonetizationOn, NewReleases, Grain } from '@mui/icons-material';
 import useWindowSize from './WindowSz';
+
+// MaterialUI imports
+import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Container from '@mui/material/Container';
+import makeStyles from '@mui/styles/makeStyles';
+import AccountBalance from '@mui/icons-material/AccountBalance';
+import Home from '@mui/icons-material/Home';
+import MenuSharp from '@mui/icons-material/MenuSharp';
+import MonetizationOn from '@mui/icons-material/MonetizationOn';
+import NewReleases from '@mui/icons-material/NewReleases';
+import Grain from '@mui/icons-material/Grain';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -15,7 +32,7 @@ const useStyles = makeStyles((theme) => {
             marginTop: theme.mixins.toolbar.minHeight
         },
         navbarHeight: {
-            minHeight: theme.mixins.toolbar.minHeight + 25,
+            minHeight: theme.mixins.toolbar.minHeight + 15,
         },
         root: {
             display: 'flex'
@@ -58,8 +75,12 @@ const Navbar = ({ children }) => {
 
     return (
         <Box className={classes.root}>
-            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }} elevation={1}>
                 <Toolbar position="static">
+                    <Grain fontSize='large' sx={{marginRight: 0.2}} onClick={() => history.push('/')}/>
+                    <Typography variant='h5' component='h1' sx={{flexGrow: 1}}>
+                        CryptoDash
+                    </Typography>
                     {size.width < 813 &&
                         (
                             <IconButton
@@ -67,17 +88,12 @@ const Navbar = ({ children }) => {
                                 edge="start"
                                 color="inherit"
                                 aria-label="menu"
-                                sx={{ mr: 1 }}
                                 onClick={() => setOpen(!open)}
                             >
                                 <MenuSharp />
                             </IconButton>
                         )
                     }
-                    <Grain fontSize='large' sx={{marginRight: 0.2}}/>
-                    <Typography variant='h5' component='h1'>
-                        CryptoDash
-                    </Typography>
                 </Toolbar>
             </AppBar>
             {size.width > 813 ?
